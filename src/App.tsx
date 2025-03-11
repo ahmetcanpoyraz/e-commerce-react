@@ -1,10 +1,14 @@
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import RouterConfig from "./config/RouterConfig";
+import Spinner from "./components/Spinner";
 
 function App() {
   return (
     <div>
       <RouterConfig />
+      <ToastContainer autoClose={2500} />
+      <Spinner />
     </div>
   );
 }

@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "username": "acpoyraz",
+      "password": "123456",
+      "id": "bf37"
+    },
+    {
+      "id": "8e4a",
+      "newUser": {
+        "username": "asdfas",
+        "password": "asdfa"
+      }
+    },
+    {
+      "id": "e2f7",
+      "newUser": {
+        "username": "acpoyraz",
+        "password": "123456"
+      }
+    },
+    {
+      "id": "4d24",
+      "newUser": {
+        "id": "75758",
+        "username": "ahmet",
+        "password": "123456",
+        "balance": 1000
+      }
+    },
+    {
+      "id": "8f31",
+      "newUser": {
+        "id": "563774",
+        "username": "555",
+        "password": "555",
+        "balance": 1000
+      }
+    }
+  ]
+}
