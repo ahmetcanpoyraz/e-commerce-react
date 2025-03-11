@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserType } from "../types/Types";
+import { ProductType, UserType } from "../types/Types";
 
 export interface AppSliceType {
   currentUser: UserType | null;
   loading: boolean;
+  products: ProductType[];
 }
 
 const initialState = {
   currentUser: null,
   loading: false,
+  products: [],
 };
 
 const appSlice = createSlice({
@@ -24,9 +26,15 @@ const appSlice = createSlice({
     ) => {
       state.currentUser = action.payload;
     },
+    setProducts: (
+      state: AppSliceType,
+      action: PayloadAction<ProductType[]>
+    ) => {
+      state.products = action.payload;
+    },
   },
 });
 
-export const { setLoading, setCurrentUser } = appSlice.actions;
+export const { setLoading, setCurrentUser, setProducts } = appSlice.actions;
 
 export default appSlice.reducer;

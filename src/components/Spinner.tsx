@@ -1,8 +1,7 @@
-import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../redux/store";
 
 function Spinner() {
   const { loading } = useSelector((state: RootState) => state.app);
