@@ -6,12 +6,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: ProductType;
 }
 
 function ProductCard(props: ProductCardProps) {
+  const navigate = useNavigate();
   const { id, title, price, description, category, image, rating } =
     props.product;
   return (
@@ -40,7 +42,7 @@ function ProductCard(props: ProductCardProps) {
       />
       <CardContent sx={{ height: "250px" }}>
         <Typography gutterBottom variant="h5" component="div">
-          {title}.substring(0,70)
+          {title.substring(0, 50)}...
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
           {description.substring(0, 200)}...
@@ -50,7 +52,12 @@ function ProductCard(props: ProductCardProps) {
         </div>
       </CardContent>
       <CardActions>
-        <Button size="small" variant="outlined" color="info">
+        <Button
+          size="small"
+          variant="outlined"
+          color="info"
+          onClick={() => navigate("/product-detail/" + id)}
+        >
           {" "}
           Detay
         </Button>
