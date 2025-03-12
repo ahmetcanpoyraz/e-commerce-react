@@ -3,6 +3,7 @@ import { ProductType, UserType } from "../types/Types";
 
 export interface AppSliceType {
   currentUser: UserType | null;
+  users: UserType[] | null;
   loading: boolean;
   drawer: boolean;
   products: ProductType[];
@@ -13,6 +14,7 @@ const initialState: AppSliceType = {
   loading: false,
   drawer: false,
   products: [],
+  users: [],
 };
 
 const appSlice = createSlice({
@@ -45,6 +47,12 @@ const appSlice = createSlice({
     ) => {
       state.products = action.payload;
     },
+    setUsers: (
+      state: AppSliceType,
+      action: PayloadAction<UserType[] | null>
+    ) => {
+      state.users = action.payload;
+    },
     filterProducts: (state: AppSliceType, action: PayloadAction<string>) => {
       const tempList: ProductType[] = [];
 
@@ -68,5 +76,6 @@ export const {
   setProducts,
   filterProducts,
   updateBalance,
+  setUsers,
 } = appSlice.actions;
 export default appSlice.reducer;

@@ -22,6 +22,7 @@ import { ProductType } from "../types/Types";
 import { FaShoppingBasket } from "react-icons/fa";
 import Badge from "@mui/material/Badge";
 import { RootState } from "../redux/store";
+import { setBasket } from "../redux/basketSlice";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ export default function Navbar() {
   const logout = () => {
     localStorage.removeItem("currentUser");
     dispatch(setCurrentUser(null));
+    dispatch(setBasket([]));
     navigate("/login");
     toast.success("Çıkış yapıldı");
   };
@@ -74,7 +76,7 @@ export default function Navbar() {
           component="div"
           sx={{ flexGrow: 1, cursor: "pointer" }}
         >
-          mağarayol
+          Ahmet's shop
         </Typography>
 
         <div

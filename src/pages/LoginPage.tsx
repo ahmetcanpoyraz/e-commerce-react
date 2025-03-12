@@ -11,6 +11,8 @@ import { UserType } from "../types/Types";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { setCurrentUser, setLoading } from "../redux/appSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface CheckUserType {
   result: boolean;
@@ -20,6 +22,7 @@ interface CheckUserType {
 function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { users } = useSelector((state: RootState) => state.app);
 
   const checkUser = (
     userList: UserType[],
@@ -41,10 +44,10 @@ function LoginPage() {
   const submit = async (values: any, action: any) => {
     try {
       dispatch(setLoading(true));
-      const response: UserType[] = await loginPageServices.login();
-      if (response) {
+
+      if (users) {
         const checkUserResponse: CheckUserType = checkUser(
-          response,
+          users,
           values.username,
           values.password
         );
@@ -57,7 +60,7 @@ function LoginPage() {
           );
           navigate("/");
         } else {
-          //Yanlış baba
+          //Yanlış
           toast.error("Kullanıcı adı veya şifre hatalı");
         }
       }
@@ -77,8 +80,8 @@ function LoginPage() {
     validationSchema: registerPageSchema,
   });
 
-  const clear = () => {
-    resetForm();
+  const goRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -144,7 +147,7 @@ function LoginPage() {
                 Giriş Yap
               </Button>
               <Button
-                onClick={clear}
+                onClick={goRegister}
                 size="small"
                 sx={{
                   textTransform: "none",
@@ -153,7 +156,7 @@ function LoginPage() {
                 }}
                 variant="contained"
               >
-                Temizle
+                Kayıt Ol
               </Button>
             </div>
           </div>

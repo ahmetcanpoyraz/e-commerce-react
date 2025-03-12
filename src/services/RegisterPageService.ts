@@ -1,4 +1,4 @@
-import { AxiosResponse } from "axios";
+/*import { AxiosResponse } from "axios";
 import axiosInstance from "../config/AxiosConfix";
 import { UserType } from "../types/Types";
 
@@ -14,3 +14,4 @@ class RegisterPageService {
 }
 
 export default new RegisterPageService();
+*/
